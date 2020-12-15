@@ -1,20 +1,18 @@
 {
   "package": {
     "dependencies": {
+      "qs": "^6.9.4",
       "@ant-design/icons": "^4.2.2",
-      "@testing-library/jest-dom": "^5.11.5",
-      "@testing-library/react": "^11.1.0",
-      "@testing-library/user-event": "^12.1.10",
       "antd": "^4.8.4",
       "axios": "^0.21.0",
       "react": "^17.0.1",
       "react-dom": "^17.0.1",
       "react-router-dom": "^5.2.0",
-      "react-scripts": "4.0.0",
       "web-vitals": "^0.2.4"
     },
     "scripts": {
       "start": "react-app-rewired start",
+      "dev": "REACT_APP_MOCK=true react-app-rewired start",
       "build": "npm run lint && react-app-rewired build",
       "test": "react-app-rewired test",
       "lint": "npm run lint:js && npm run lint:prettier",
@@ -28,6 +26,11 @@
       "extends": ["react-app", "react-app/jest"]
     },
     "devDependencies": {
+      "@testing-library/jest-dom": "^5.11.5",
+      "@testing-library/react": "^11.1.0",
+      "@testing-library/user-event": "^12.1.10",
+      "react-scripts": "4.0.0",
+      "node-sass": "^5.0.0",
       "customize-cra": "^1.0.0",
       "eslint-formatter-pretty": "^4.0.0",
       "lint-staged": "^10.5.1",

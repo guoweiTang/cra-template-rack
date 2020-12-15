@@ -1,7 +1,7 @@
 <!--
  * @Author: ice
  * @Date: 2020-12-14 17:45:16
- * @LastEditTime: 2020-12-15 12:10:35
+ * @LastEditTime: 2020-12-15 17:24:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/README.md
@@ -17,6 +17,7 @@ $ npx create-react-app my-app --template rack
 ```
 ## Highlights
 > Compared with create-react-app's official template cra-template
+- sass
 - directory alias
 - change build directory
 - router
@@ -24,7 +25,7 @@ $ npx create-react-app my-app --template rack
 - prettier
 - lint
 - stipulate directory
-- `mock (unfinished, in development)`
+- mock
 - `redux(unfinished, in development)`
 
 For more information, please refer to:
