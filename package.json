@@ -1,6 +1,6 @@
 {
   "name": "cra-template-rack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [
     "react",
     "create-react-app",
@@ -10,7 +10,7 @@
   "description": "The template for Create React App.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/guoweiTang/cra-template-rack.git",
+    "url": "https://github.com/poeticloud/cra-template-rack.git",
     "directory": "packages/cra-template"
   },
   "license": "MIT",
@@ -18,7 +18,7 @@
     "node": ">=10"
   },
   "bugs": {
-    "url": "https://github.com/guoweiTang/cra-template-rack/issues"
+    "url": "https://github.com/poeticloud/cra-template-rack/issues"
   },
   "files": [
     "template",
