@@ -1,7 +1,7 @@
 <!--
  * @Author: ice
  * @Date: 2020-12-14 17:45:16
- * @LastEditTime: 2020-12-14 19:46:50
+ * @LastEditTime: 2020-12-15 12:10:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/README.md
@@ -13,8 +13,19 @@ This is a template for [Create React App](https://github.com/facebook/create-rea
 ## usage
 
 ```sh
-npx create-react-app my-app --template rack
+$ npx create-react-app my-app --template rack
 ```
+## Highlights
+> Compared with create-react-app's official template cra-template
+- directory alias
+- change build directory
+- router
+- axios
+- prettier
+- lint
+- stipulate directory
+- `mock (unfinished, in development)`
+- `redux(unfinished, in development)`
 
 For more information, please refer to:
 
