@@ -1,7 +1,7 @@
 <!--
  * @Author: ice
  * @Date: 2020-12-14 17:45:16
- * @LastEditTime: 2020-12-15 17:24:49
+ * @LastEditTime: 2020-12-16 16:57:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/README.md
@@ -26,7 +26,7 @@ $ npx create-react-app my-app --template rack
 - lint
 - stipulate directory
 - mock
-- `redux(unfinished, in development)`
+- redux
 
 For more information, please refer to:
 
