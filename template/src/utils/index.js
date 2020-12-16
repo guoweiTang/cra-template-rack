@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-07 11:54:50
- * @LastEditTime: 2020-12-07 11:59:00
+ * @LastEditTime: 2020-12-16 16:29:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /apis-webuser/src/utils/index.js
@@ -10,37 +10,42 @@ import { httpMethods } from '@/config';
 
 /**
  * 根据请求方法获取tag颜色
- * @param {string} method 
+ * @param {string} method
  */
-export function getColorByMethod (method) {
+export function getColorByMethod(method) {
   let color;
   switch (method.toLowerCase()) {
     case httpMethods[0]:
-      color = 'green'
+      color = 'green';
       break;
     case httpMethods[1]:
-      color = 'gold'
+      color = 'gold';
       break;
     case httpMethods[2]:
-      color = 'volcano'
+      color = 'volcano';
       break;
     case httpMethods[3]:
-      color = 'orange'
+      color = 'orange';
       break;
     case httpMethods[4]:
-      color = 'red'
+      color = 'red';
       break;
     case httpMethods[5]:
-      color = 'geekblue'
+      color = 'geekblue';
       break;
     case httpMethods[6]:
-      color = 'cyan'
+      color = 'cyan';
       break;
     case httpMethods[7]:
-      color = 'blue'
+      color = 'blue';
       break;
     default:
-      color = 'green'
+      color = 'green';
   }
   return color;
+}
+
+export function getRandomName() {
+  const names = ['Jone', 'Jobs', 'Tom', 'Jack', 'Philips', 'tang'];
+  return names[Math.floor(Math.random() * 6)];
 }

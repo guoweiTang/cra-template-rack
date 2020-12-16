@@ -7,4 +7,13 @@
  * @FilePath: /apis-webuser/src/config/index.js
  */
 
-export const httpMethods = ['get', 'post', 'put', 'patch', 'delete', 'head', 'options', 'trace'];
+export const httpMethods = [
+  'get',
+  'post',
+  'put',
+  'patch',
+  'delete',
+  'head',
+  'options',
+  'trace',
+];

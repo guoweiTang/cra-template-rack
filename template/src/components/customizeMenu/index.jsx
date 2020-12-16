@@ -22,8 +22,8 @@ const App = () => {
             icon={
               item.icons === 'HomeOutlined' ? (
                 <HomeOutlined />
-              ) : item.icons === 'ProjectOutlined' && (
-                <ProjectOutlined />
+              ) : (
+                item.icons === 'ProjectOutlined' && <ProjectOutlined />
               )
             }
           >

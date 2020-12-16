@@ -4,15 +4,12 @@ import { Modal, Form, Input } from 'antd';
 import { addService, updateService } from '@/views/service';
 
 class ServiceModal extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.refForm = React.createRef(null);
   }
   async componentDidUpdate(prevProps, prevState, snapshot) {
-    const {
-      values,
-      visible,
-    } = this.props;
+    const { values, visible } = this.props;
     // 组件初始化(组件显示回调函数)
     if (!prevProps.visible && visible) {
       this.refForm.current.setFieldsValue({
@@ -21,7 +18,7 @@ class ServiceModal extends React.Component {
       });
     }
   }
-  render () {
+  render() {
     const { onCancel, onSuccess, visible, values } = this.props;
     return (
       <Modal
@@ -49,7 +46,7 @@ class ServiceModal extends React.Component {
             if (res.status === 200) {
               onSuccess(res.data);
             }
-          } catch(info) {
+          } catch (info) {
             console.log('Validate Failed:', info);
           }
         }}
@@ -83,6 +80,6 @@ class ServiceModal extends React.Component {
       </Modal>
     );
   }
-};
+}
 
 export default ServiceModal;
