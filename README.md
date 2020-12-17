@@ -1,7 +1,7 @@
 <!--
  * @Author: ice
  * @Date: 2020-12-14 17:45:16
- * @LastEditTime: 2020-12-16 16:57:39
+ * @LastEditTime: 2020-12-17 19:22:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/README.md
@@ -18,15 +18,16 @@ $ npx create-react-app my-app --template rack
 ## Highlights
 > Compared with create-react-app's official template cra-template
 - sass
-- directory alias
-- change build directory
-- router
 - axios
+- router
+- redux
 - prettier
 - lint
-- stipulate directory
 - mock
-- redux
+- test
+- `directory alias(Not recommended: the test alias is not supported yet)`
+- change build directory
+- stipulate directory
 
 For more information, please refer to:
 

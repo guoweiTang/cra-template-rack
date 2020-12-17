@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-12-07 11:54:50
- * @LastEditTime: 2020-12-16 16:29:42
+ * @LastEditTime: 2020-12-17 17:09:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /apis-webuser/src/utils/index.js
  */
-import { httpMethods } from '@/config';
+import { httpMethods } from '../config';
 
 /**
  * 根据请求方法获取tag颜色

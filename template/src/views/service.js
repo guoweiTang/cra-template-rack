@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2020-12-14 18:45:04
- * @LastEditTime: 2020-12-15 19:29:38
+ * @LastEditTime: 2020-12-17 17:11:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/template/src/views/service.js
  */
-import request from '@/utils/request';
+import request from '../utils/request';
 
 /**
  * service相关接口

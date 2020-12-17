@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Form, Input } from 'antd';
 
-import { addService, updateService } from '@/views/service';
+import { addService, updateService } from '../../service';
 
 class ServiceModal extends React.Component {
   constructor(props) {

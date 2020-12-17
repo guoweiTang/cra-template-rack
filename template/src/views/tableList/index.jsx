@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { List, Card, Button, Popconfirm } from 'antd';
 
-import { getRandomName } from '@/utils';
-import { reName, addAge, selectUser } from '@/store/userSlice';
+import { getRandomName } from '../../utils';
+import { reName, addAge, selectUser } from '../../store/userSlice';
 import {
   EditOutlined,
   DeleteOutlined,
@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 
 import ServiceModal from './components/ServiceModal';
-import { getAllServices, deleteService } from '@/views/service';
+import { getAllServices, deleteService } from '../service';
 
 const ServiceList = (props) => {
   const user = useSelector(selectUser);
