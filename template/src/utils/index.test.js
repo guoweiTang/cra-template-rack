@@ -12,5 +12,5 @@ import { Names } from '../config';
 describe('Test utils', () => {
   it('getRandomName', () => {
     expect(Names).toContain(getRandomName());
-  })
-})
+  });
+});

@@ -60,7 +60,9 @@ class ServiceModal extends React.Component {
           <Form.Item
             name="title"
             label="projectName"
-            rules={[{ required: true, message: 'Please input the project name!' }]}
+            rules={[
+              { required: true, message: 'Please input the project name!' },
+            ]}
           >
             <Input />
           </Form.Item>
