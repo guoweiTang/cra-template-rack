@@ -25,9 +25,9 @@ class ServiceModal extends React.Component {
         visible={visible}
         maskClosable={false}
         closable={false}
-        title="新增/编辑"
-        okText="保存"
-        cancelText="取消"
+        title="add/edit"
+        okText="save"
+        cancelText="cancel"
         onCancel={() => {
           onCancel();
         }}
@@ -59,18 +59,18 @@ class ServiceModal extends React.Component {
         >
           <Form.Item
             name="title"
-            label="项目名称"
-            rules={[{ required: true, message: '请输入项目名称！' }]}
+            label="projectName"
+            rules={[{ required: true, message: 'Please input the project name!' }]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             name="version"
-            label="版本"
+            label="version"
             rules={[
               {
                 required: true,
-                message: '请输入版本号！',
+                message: 'Please input the version!',
               },
             ]}
           >

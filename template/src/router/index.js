@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-12-14 18:03:16
- * @LastEditTime: 2020-12-14 18:10:51
- * @LastEditors: your name
+ * @LastEditTime: 2020-12-21 16:10:26
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/template/src/router/index.js
  */
@@ -12,13 +12,13 @@ const routes = [
   {
     path: '/',
     exact: true,
-    title: '首页',
+    title: 'Home',
     icons: 'HomeOutlined',
     component: App,
   },
   {
     path: '/tableList',
-    title: '列表页',
+    title: 'Table List',
     icons: 'ProjectOutlined',
     component: TableList,
   },

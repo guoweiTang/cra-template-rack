@@ -38,7 +38,8 @@
       "eslint-formatter-pretty": "^4.0.0",
       "lint-staged": "^10.5.1",
       "prettier": "^2.1.2",
-      "react-app-rewired": "^2.1.6"
+      "react-app-rewired": "^2.1.6",
+      "supertest": "^6.0.1"
     }
   }
 }

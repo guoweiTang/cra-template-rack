@@ -2,9 +2,11 @@ import axios from 'axios';
 import qs from 'qs';
 import { message as Message } from 'antd';
 
+import { BASEURL } from '../config';
+
 const MOCK = process.env.REACT_APP_MOCK === 'true';
 const http = axios.create({
-  baseURL: MOCK ? '/' : 'http://192.168.11.13:10010',
+  baseURL: MOCK ? '/' : BASEURL,
   timeout: 10 * 1000,
   withCredentials: false,
 });

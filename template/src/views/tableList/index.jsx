@@ -30,9 +30,8 @@ const ServiceList = (props) => {
       current,
       page_size,
     });
-    console.log(res.data);
+    // console.log(res.data);
     if (res.status === 200) {
-      console.log(current);
       setCurrentPage(current);
       setTotal(res.data.count);
       setPageSize(page_size);
@@ -59,11 +58,11 @@ const ServiceList = (props) => {
   return (
     <>
       <p>
-        用户信息：
+        User Info：
         <br />
-        姓名：{user.name}
+        name：{user.name}
         <br />
-        年龄：{user.age}
+        age：{user.age}
         <br />
         <Button
           className="brothers-button"
@@ -71,7 +70,7 @@ const ServiceList = (props) => {
             dispatch(addAge(1));
           }}
         >
-          我要一年年长大
+          age increase
         </Button>
         <br />
         <Button
@@ -80,7 +79,7 @@ const ServiceList = (props) => {
             dispatch(reName(getRandomName()));
           }}
         >
-          我要换名字
+          rename
         </Button>
       </p>
       {/* service */}
@@ -91,7 +90,7 @@ const ServiceList = (props) => {
           setIsShowModal(true);
         }}
       >
-        创建项目
+        create project
       </Button>
       {/* API详细信息 */}
       <List
@@ -125,11 +124,11 @@ const ServiceList = (props) => {
                 <SettingOutlined
                   key="setting"
                   onClick={() => {
-                    console.log('查看详情');
+                    console.log('read details');
                   }}
                 />,
                 <Popconfirm
-                  title="确认删除该项目吗，删除后不可恢复？"
+                  title="Are you sure to delete this service?"
                   visible={item.isShowDelete}
                   onConfirm={async () => {
                     const data = await deleteService({

@@ -10,11 +10,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          用户信息：
+          User Info：
           <br />
-          姓名：{user.name}
+          name：{user.name}
           <br />
-          年龄：{user.age}
+          age：{user.age}
         </p>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
