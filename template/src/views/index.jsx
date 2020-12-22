@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import CustomizeMenu from '@/components/customizeMenu';
 import routes from '@/router';
+import Error404 from './error/404';
 
 const { Content, Footer, Sider } = Layout;
 
@@ -53,6 +54,7 @@ const Main = () => {
               {routes.map((route, i) => (
                 <RouteWithSubRoutes key={i} {...route} />
               ))}
+              <Route component={Error404} />
             </Switch>
           </Content>
           <Footer style={{ textAlign: 'center' }}>

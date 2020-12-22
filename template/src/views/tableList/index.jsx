@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { List, Card, Button, Popconfirm } from 'antd';
+import { List, Card, Button, Popconfirm, Row, Col } from 'antd';
 
 import { getRandomName } from '../../utils';
 import { reName, addAge, selectUser } from '../../store/userSlice';
@@ -57,35 +57,51 @@ const ServiceList = (props) => {
 
   return (
     <>
-      <p>
-        User Info：
-        <br />
-        name：{user.name}
-        <br />
-        age：{user.age}
-        <br />
-        <Button
-          className="brothers-button"
-          onClick={() => {
-            dispatch(addAge(1));
+      <Row
+        wrap={false}
+        style={{
+          background: 'rgba(190, 190, 190, 0.2)',
+          padding: 10,
+          lineHeight: '32px',
+        }}
+      >
+        <Col
+          flex="130px"
+          style={{
+            fontWeight: 'bold',
+            fontSize: 14,
           }}
         >
-          age increase
-        </Button>
-        <br />
-        <Button
-          className="brothers-button"
-          onClick={() => {
-            dispatch(reName(getRandomName()));
-          }}
-        >
-          rename
-        </Button>
-      </p>
+          Redux User Info：
+        </Col>
+        <Col flex="130px">name：{user.name}</Col>
+        <Col flex="130px">age：{user.age}</Col>
+        <Col flex="250px">
+          <Button
+            className="brothers-button"
+            onClick={() => {
+              dispatch(addAge(1));
+            }}
+          >
+            age increase
+          </Button>
+          <Button
+            className="brothers-button"
+            onClick={() => {
+              dispatch(reName(getRandomName()));
+            }}
+          >
+            rename
+          </Button>
+        </Col>
+      </Row>
       {/* service */}
       <Button
         type="primary"
         className="brothers-button"
+        style={{
+          margin: '30px 0 10px',
+        }}
         onClick={() => {
           setIsShowModal(true);
         }}
