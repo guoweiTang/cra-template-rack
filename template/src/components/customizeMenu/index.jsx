@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Menu } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 import { HomeOutlined, ProjectOutlined } from '@ant-design/icons';
-import routes from '@/router';
+import routes from '../../router';
 
 const App = () => {
   const location = useLocation();

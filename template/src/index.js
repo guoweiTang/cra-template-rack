@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-12-14 18:03:16
- * @LastEditTime: 2020-12-16 16:38:07
+ * @LastEditTime: 2020-12-24 17:56:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/template/src/index.js
@@ -10,10 +10,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import store from '@/store';
-import '@/index.scss';
-import Views from '@/views';
-import reportWebVitals from '@/reportWebVitals';
+import store from './store';
+import './index.scss';
+import Views from './views';
+import reportWebVitals from './reportWebVitals';
 
 if (process.env.REACT_APP_MOCK === 'true') {
   import('./mock/db').then(() => {

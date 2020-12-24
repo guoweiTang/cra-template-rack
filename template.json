@@ -13,10 +13,10 @@
       "web-vitals": "^0.2.4"
     },
     "scripts": {
-      "start": "react-app-rewired start",
-      "dev": "REACT_APP_MOCK=true react-app-rewired start",
-      "build": "npm run lint && react-app-rewired build",
-      "test": "react-app-rewired test",
+      "start": "react-scripts start",
+      "dev": "REACT_APP_MOCK=true react-scripts start",
+      "build": "npm run lint && react-scripts build",
+      "test": "react-scripts test",
       "lint": "npm run lint:js && npm run lint:prettier",
       "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
       "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
@@ -34,11 +34,9 @@
       "@testing-library/user-event": "^12.1.10",
       "react-scripts": "4.0.0",
       "node-sass": "^4.14.1",
-      "customize-cra": "^1.0.0",
       "eslint-formatter-pretty": "^4.0.0",
       "lint-staged": "^10.5.1",
       "prettier": "^2.1.2",
-      "react-app-rewired": "^2.1.6",
       "supertest": "^6.0.1"
     }
   }

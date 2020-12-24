@@ -1,7 +1,7 @@
 <!--
  * @Author: ice
  * @Date: 2020-12-14 17:45:16
- * @LastEditTime: 2020-12-17 19:22:23
+ * @LastEditTime: 2020-12-24 18:10:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/README.md
@@ -25,9 +25,10 @@ $ npx create-react-app my-app --template rack
 - lint
 - mock
 - test
-- `directory alias(Not recommended: the test alias is not supported yet)`
-- change build directory
+- dockerFile
 - stipulate directory
+## Links
+> If you need typescript, you can go [Cra-template-rack-typescript](https://www.npmjs.com/package/cra-template-rack-typescript).
 
 For more information, please refer to:
 

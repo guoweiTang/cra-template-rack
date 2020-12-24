@@ -1,6 +1,6 @@
 {
   "name": "cra-template-rack",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "keywords": [
     "react",
     "create-react-app",
@@ -13,6 +13,7 @@
     "url": "https://github.com/poeticloud/cra-template-rack.git",
     "directory": "packages/cra-template"
   },
+  "author": "ice",
   "license": "MIT",
   "engines": {
     "node": ">=10"
