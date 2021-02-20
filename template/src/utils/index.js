@@ -1,12 +1,8 @@
-/*
- * @Author: your name
- * @Date: 2020-12-07 11:54:50
- * @LastEditTime: 2020-12-21 15:49:07
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /apis-webuser/src/utils/index.js
+/**
+ * 生成指定范围的随机数
+ * @param min 最小值
+ * @param max 最大值
  */
-import { Names } from '../config';
-export function getRandomName() {
-  return Names[Math.floor(Math.random() * 6)];
+export function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }

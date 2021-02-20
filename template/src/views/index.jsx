@@ -1,68 +1,54 @@
-import React, { useState } from 'react';
-import { Layout } from 'antd';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Layout, ConfigProvider } from 'antd';
+import { useLocation } from 'react-router-dom';
+import AppHeader from '../components/appHeader';
+import AppSider from '../components/appSider';
+import AppContent from '../components/appContent';
+import zhCN from 'antd/lib/locale/zh_CN';
 
-import CustomizeMenu from '../components/customizeMenu';
-import routes from '../router';
-import Error404 from './error/404';
+const { Footer } = Layout;
 
-const { Content, Footer, Sider } = Layout;
+const minScreenWidth = 800;
 
-/**
- *
- * @param {object} route 路由配置对象
- */
-function RouteWithSubRoutes(route = {}) {
-  return (
-    <Route
-      path={route.path}
-      render={(props) => (
-        // pass the sub-routes down to keep nesting
-        <route.component {...props} routes={route.routes} />
-      )}
-    />
-  );
-}
 const Main = () => {
-  const [collapsed, setCollapsed] = useState(false);
+  const { pathname } = useLocation();
+  // 错误界面和认证界面不显示侧边菜单栏
+  const hidden = /^\/(auth|error)\/.*/.test(pathname);
+  const [collapsed, setCollapsed] = useState(
+    window.innerWidth < minScreenWidth
+  );
+
+  // 屏幕过小则隐藏侧边栏
+  useEffect(() => {
+    window.addEventListener(
+      'resize',
+      () => {
+        setCollapsed(window.innerWidth < minScreenWidth);
+      },
+      false
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setCollapsed]);
+
   return (
-    <Router>
-      <Layout>
-        <Sider
-          collapsible
-          collapsed={collapsed}
-          onCollapse={(val) => setCollapsed(val)}
-          style={{
-            overflow: 'auto',
-            height: '100vh',
-            position: 'fixed',
-            left: 0,
-          }}
-        >
-          <div className="logo" />
-          <CustomizeMenu />
-        </Sider>
+    <ConfigProvider locale={zhCN}>
+      <Layout style={{ display: hidden ? 'none' : '' }}>
+        <AppSider collapsed={collapsed} setCollapsed={setCollapsed} />
         <Layout
           style={{
             transition: 'all 0.2s',
-            marginLeft: collapsed ? 80 : 200,
+            marginLeft: collapsed ? 48 : 200,
             minHeight: '100vh',
           }}
         >
-          <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-            <Switch>
-              {routes.map((route, i) => (
-                <RouteWithSubRoutes key={i} {...route} />
-              ))}
-              <Route component={Error404} />
-            </Switch>
-          </Content>
+          <AppHeader />
+          <AppContent />
           <Footer style={{ textAlign: 'center' }}>
             PoetiCloud ©2020 Created by PoetiCloud UED
           </Footer>
         </Layout>
       </Layout>
-    </Router>
+    </ConfigProvider>
   );
 };
 

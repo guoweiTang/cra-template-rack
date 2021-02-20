@@ -1,24 +1,22 @@
 import axios from 'axios';
 import qs from 'qs';
 import { message as Message } from 'antd';
-
+import { initToken, refreshToken } from './token';
 import { BASEURL } from '../config';
 
-const MOCK = process.env.REACT_APP_MOCK === 'true';
 const http = axios.create({
-  baseURL: MOCK ? '/' : BASEURL,
+  baseURL: BASEURL,
   timeout: 10 * 1000,
   withCredentials: false,
 });
 let hide;
 
-function getTipsText(method) {
-  let tipsText;
+function getTipsText(method = '') {
+  let tipsText = '';
   switch (method) {
-    case 'post':
     case 'put':
     case 'patch':
-      tipsText = '保存';
+      tipsText = '更新';
       break;
     case 'delete':
       tipsText = '删除';
@@ -33,14 +31,13 @@ function getTipsText(method) {
  */
 http.interceptors.request.use(
   (config) => {
-    // 非get请求错误处理
+    // 非get,post请求错误处理
     let tipsText = getTipsText(config.method);
     if (tipsText) {
       hide = Message.loading(`正在${tipsText}`);
     }
 
-    config.headers['Accept-Language'] = 'zh-CN';
-    config.headers['content-type'] = 'application/json' || '';
+    config.headers['content-type'] = 'application/json';
     // 防止缓存，GET请求默认带_t参数
     if (config.method === 'get') {
       config.params = {
@@ -53,6 +50,9 @@ http.interceptors.request.use(
     ) {
       config.data = qs.stringify(config.data);
     }
+
+    // 初始化token
+    initToken(config);
 
     return config;
   },
@@ -73,7 +73,8 @@ http.interceptors.response.use(
       if (response.status === 200) {
         Message.success(`${tipsText}成功`);
       } else {
-        Message.success(`${tipsText}失败请重试！`);
+        Message.destroy();
+        Message.error(`${tipsText}失败请重试！`);
       }
     }
 
@@ -81,23 +82,37 @@ http.interceptors.response.use(
   },
   (error) => {
     const { response, request, message, config } = error;
-    // 非get请求错误处理
+    // 非get,post请求错误处理
     let tipsText = getTipsText(config.method);
     if (tipsText) {
-      hide();
-      Message.success(`${tipsText}失败请重试！`);
+      if (!response || response.status === 400 || response.status === 403) {
+        hide();
+        Message.destroy();
+        Message.error(`${tipsText}失败请重试！`);
+      }
     }
 
     if (response) {
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
-      const { status, headers } = response;
+      const { status, headers, data } = response;
       // token过期重新登录
-      if (status === 401) {
-        console.error('登录信息过期');
-      } else if (status >= 400 && status < 500) {
-        console.error('请求错误');
-      } else if (status >= 500) {
+      switch (status) {
+        case 400:
+        case 403:
+          Message.destroy();
+          Message.error(data.message);
+          break;
+        case 401:
+          refreshToken();
+          console.error('登录信息过期');
+          break;
+        case 422:
+          console.error('参数校验失败');
+          break;
+        default:
+      }
+      if (status >= 500) {
         console.error('服务器错误');
       }
       console.log(headers);

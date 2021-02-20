@@ -1,12 +1,40 @@
 /*
  * @Author: your name
  * @Date: 2020-12-14 18:45:04
- * @LastEditTime: 2020-12-17 17:11:33
+ * @LastEditTime: 2020-12-23 19:08:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /cra-template-rack/template/src/views/service.js
  */
 import request from '../utils/request';
+
+/**
+ * auth相关接口
+ */
+export function getToken(data) {
+  return request('/auth/obtain-token', {
+    method: 'POST',
+    data: {
+      ...data,
+    },
+  });
+}
+export function register(data) {
+  return request('/user/register', {
+    method: 'POST',
+    data: {
+      ...data,
+    },
+  });
+}
+export function resetPassword(data) {
+  return request('/reset-password', {
+    method: 'POST',
+    data: {
+      ...data,
+    },
+  });
+}
 
 /**
  * service相关接口
@@ -42,6 +70,40 @@ export function deleteService(pathParams, params = {}) {
     method: 'DELETE',
     data: {
       ...params,
+    },
+  });
+}
+
+export function getMyInfo(params = {}) {
+  return request(`/me`, {
+    data: {
+      ...params,
+    },
+  });
+}
+
+export function updateMyInfo(params = {}) {
+  return request(`/me`, {
+    method: 'PUT',
+    data: {
+      ...params,
+    },
+  });
+}
+
+export function sendEmail(data) {
+  return request('/resend-email/find-password', {
+    method: 'POST',
+    data: {
+      ...data,
+    },
+  });
+}
+export function sendRegisterEmail(data) {
+  return request('/resend-email/register', {
+    method: 'POST',
+    data: {
+      ...data,
     },
   });
 }

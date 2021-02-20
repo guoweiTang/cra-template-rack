@@ -1,11 +1,23 @@
 /*
  * @Author: your name
  * @Date: 2020-11-18 21:37:11
- * @LastEditTime: 2020-12-21 15:48:25
+ * @LastEditTime: 2020-12-23 12:27:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /apis-webuser/src/config/index.js
  */
+const MOCK = process.env.REACT_APP_MOCK === 'true';
 
-export const BASEURL = 'http://192.168.11.13:10010';
-export const Names = ['Jone', 'Jobs', 'Tom', 'Jack', 'Philips', 'tang'];
+export const BASEURL = MOCK ? '/' : 'https://examples.com';
+export const Colors = [
+  'green',
+  'gold',
+  'volcano',
+  'orange',
+  'red',
+  'geekblue',
+  'cyan',
+  'blue',
+];
+export const emailPattern = /^\w+@\w+\.\w+(\.\w+)?$/;
+export const passwordPattern = /^(?=.*[a-z])(?=.*\d)[^]{6,20}$/;

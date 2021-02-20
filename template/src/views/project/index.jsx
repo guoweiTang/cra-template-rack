@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { List, Card, Button, Popconfirm, Row, Col } from 'antd';
-
-import { getRandomName } from '../../utils';
-import { reName, addAge, selectUser } from '../../store/userSlice';
+import { List, Card, Button, Popconfirm } from 'antd';
 import {
   EditOutlined,
   DeleteOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
-
 import ServiceModal from './components/ServiceModal';
 import { getAllServices, deleteService } from '../service';
 
-const ServiceList = (props) => {
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
-
+const ServiceList = () => {
   const [isLoading] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [total, setTotal] = useState(0);
   const [pageSize, setPageSize] = useState(12);
@@ -57,44 +49,6 @@ const ServiceList = (props) => {
 
   return (
     <>
-      <Row
-        wrap={false}
-        style={{
-          background: 'rgba(190, 190, 190, 0.2)',
-          padding: 10,
-          lineHeight: '32px',
-        }}
-      >
-        <Col
-          flex="130px"
-          style={{
-            fontWeight: 'bold',
-            fontSize: 14,
-          }}
-        >
-          Redux User Info：
-        </Col>
-        <Col flex="130px">name：{user.name}</Col>
-        <Col flex="130px">age：{user.age}</Col>
-        <Col flex="250px">
-          <Button
-            className="brothers-button"
-            onClick={() => {
-              dispatch(addAge(1));
-            }}
-          >
-            age increase
-          </Button>
-          <Button
-            className="brothers-button"
-            onClick={() => {
-              dispatch(reName(getRandomName()));
-            }}
-          >
-            rename
-          </Button>
-        </Col>
-      </Row>
       {/* service */}
       <Button
         type="primary"
@@ -175,7 +129,7 @@ const ServiceList = (props) => {
       />
       {/* 新增/编辑service */}
       <ServiceModal
-        onSuccess={(data) => {
+        onSuccess={() => {
           handleServiceCancel();
           init();
         }}
