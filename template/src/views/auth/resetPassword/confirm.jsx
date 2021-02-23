@@ -6,6 +6,7 @@ import logo from '../../../assets/img/logo.svg';
 import { useHistory } from 'react-router-dom';
 import qs from 'qs';
 import { resetPassword, getToken } from '../../service';
+import { setToken } from '../../../utils/token';
 
 const { Text } = Typography;
 
@@ -29,13 +30,14 @@ const ResetPasswordConfirm = () => {
       setLoading(false);
       message.success('密码重置成功！');
       try {
-        const res = await getToken({
+        const {
+          data: { access_token, refresh_token },
+        } = await getToken({
           email: queryParams.email?.toString() || '',
           password: values.password,
           is_admin: false,
         });
-        localStorage.setItem('ACCESS_TOKEN_USER', res.data?.access_token);
-        localStorage.setItem('REFRESH_TOKEN_USER', res.data?.refresh_token);
+        setToken(access_token, refresh_token);
         history.push('/auth/reset-password/success');
       } catch (err) {
         history.push('/auth/login');
