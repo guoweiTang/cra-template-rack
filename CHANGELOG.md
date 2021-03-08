@@ -1,8 +1,9 @@
-## [0.4.1](https://github.com/poeticloud/cra-template-rack/compare/v0.4.0...v0.4.1) (2021-02-23)
+# [0.5.0](https://github.com/poeticloud/cra-template-rack/compare/v0.4.0...v0.5.0) (2021-03-08)
 
 
 ### Bug Fixes
 
+* 无痛刷新token ([9389405](https://github.com/poeticloud/cra-template-rack/commit/9389405b64886903cd938f9003a5521e09a3fc25))
 * **account:** 当get请求过期刷新token后重载页面 ([590f758](https://github.com/poeticloud/cra-template-rack/commit/590f7582933be2dd013c04460998abbea6bb9358))
 
 
