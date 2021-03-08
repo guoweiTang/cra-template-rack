@@ -1,11 +1,11 @@
-/*
- * @Author: your name
- * @Date: 2020-11-18 21:37:11
- * @LastEditTime: 2020-12-23 12:27:32
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /apis-webuser/src/config/index.js
- */
+// 运行环境配置项
+let settings;
+export function getSettings() {
+  return settings;
+}
+export function setSettings(val) {
+  settings = val;
+}
 const MOCK = process.env.REACT_APP_MOCK === 'true';
 
 export const BASEURL = MOCK ? '/' : 'https://examples.com';

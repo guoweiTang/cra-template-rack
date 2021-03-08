@@ -12,7 +12,7 @@ import request from '../utils/request';
  * auth相关接口
  */
 export function getToken(data) {
-  return request('/auth/obtain-token', {
+  return request()('/auth/obtain-token', {
     method: 'POST',
     data: {
       ...data,
@@ -20,7 +20,7 @@ export function getToken(data) {
   });
 }
 export function register(data) {
-  return request('/user/register', {
+  return request()('/user/register', {
     method: 'POST',
     data: {
       ...data,
@@ -28,7 +28,7 @@ export function register(data) {
   });
 }
 export function resetPassword(data) {
-  return request('/reset-password', {
+  return request()('/reset-password', {
     method: 'POST',
     data: {
       ...data,
@@ -40,13 +40,13 @@ export function resetPassword(data) {
  * service相关接口
  */
 export function getAllServices(params = {}) {
-  return request('/svc', {
+  return request()('/svc', {
     params,
   });
 }
 
 export function addService(params = {}) {
-  return request('/svc', {
+  return request()('/svc', {
     method: 'POST',
     data: {
       ...params,
@@ -56,7 +56,7 @@ export function addService(params = {}) {
 
 export function updateService(pathParams, params = {}) {
   const { serviceId } = pathParams;
-  return request(`/svc/${serviceId}`, {
+  return request()(`/svc/${serviceId}`, {
     method: 'PUT',
     data: {
       ...params,
@@ -66,7 +66,7 @@ export function updateService(pathParams, params = {}) {
 
 export function deleteService(pathParams, params = {}) {
   const { serviceId } = pathParams;
-  return request(`/svc/${serviceId}`, {
+  return request()(`/svc/${serviceId}`, {
     method: 'DELETE',
     data: {
       ...params,
@@ -75,7 +75,7 @@ export function deleteService(pathParams, params = {}) {
 }
 
 export function getMyInfo(params = {}) {
-  return request(`/me`, {
+  return request()(`/me`, {
     data: {
       ...params,
     },
@@ -83,7 +83,7 @@ export function getMyInfo(params = {}) {
 }
 
 export function updateMyInfo(params = {}) {
-  return request(`/me`, {
+  return request()(`/me`, {
     method: 'PUT',
     data: {
       ...params,
@@ -92,7 +92,7 @@ export function updateMyInfo(params = {}) {
 }
 
 export function sendEmail(data) {
-  return request('/resend-email/find-password', {
+  return request()('/resend-email/find-password', {
     method: 'POST',
     data: {
       ...data,
@@ -100,7 +100,7 @@ export function sendEmail(data) {
   });
 }
 export function sendRegisterEmail(data) {
-  return request('/resend-email/register', {
+  return request()('/resend-email/register', {
     method: 'POST',
     data: {
       ...data,

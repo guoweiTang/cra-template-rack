@@ -1,0 +1,5 @@
+{
+  "is_production": "false",
+  "api_origin": "https://c80.nlzqtcp.develop.poeticloud.com",
+  "api_pathname": "/api/v1/backend"
+}

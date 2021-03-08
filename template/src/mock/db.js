@@ -6,11 +6,11 @@
  * @Description: In User Settings Edit
  * @FilePath: /my-app/mock/db.js
  */
-import request from '../utils/request';
+import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 // This sets the mock adapter on the default instance
-var mock = new MockAdapter(request);
+var mock = new MockAdapter(axios);
 
 // Mock GET request to /users when param `searchText` is 'John'
 // arguments for reply are (status, data, headers)
