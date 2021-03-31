@@ -13,26 +13,23 @@ import request from '../utils/request';
  */
 export function getToken(data) {
   return request()('/auth/obtain-token', {
+    skipAuthRefresh: true,
     method: 'POST',
-    data: {
-      ...data,
-    },
+    data,
   });
 }
 export function register(data) {
   return request()('/user/register', {
+    skipAuthRefresh: true,
     method: 'POST',
-    data: {
-      ...data,
-    },
+    data,
   });
 }
 export function resetPassword(data) {
   return request()('/reset-password', {
+    skipAuthRefresh: true,
     method: 'POST',
-    data: {
-      ...data,
-    },
+    data,
   });
 }
 
@@ -93,10 +90,9 @@ export function updateMyInfo(params = {}) {
 
 export function sendEmail(data) {
   return request()('/resend-email/find-password', {
+    skipAuthRefresh: true,
     method: 'POST',
-    data: {
-      ...data,
-    },
+    data,
   });
 }
 export function sendRegisterEmail(data) {

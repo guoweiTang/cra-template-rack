@@ -48,7 +48,9 @@ export default function request() {
           ...{ _t: new Date().getTime() },
         };
       }
-      initToken(config);
+      if (!config.skipAuthRefresh) {
+        initToken(config);
+      }
       return config;
     },
     (error) => {
