@@ -1,3 +1,12 @@
+## [0.5.2](https://github.com/poeticloud/cra-template-rack/compare/v0.5.0...v0.5.2) (2021-04-12)
+
+
+### Bug Fixes
+
+* 非认证接口不走认证机制 ([1e714c2](https://github.com/poeticloud/cra-template-rack/commit/1e714c2904fbacdc9ddd3fa72f306a374953885f))
+
+
+
 # [0.5.0](https://github.com/poeticloud/cra-template-rack/compare/v0.4.0...v0.5.0) (2021-03-08)
 
 
