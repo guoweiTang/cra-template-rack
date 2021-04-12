@@ -9,6 +9,10 @@ export function setSettings(val) {
 const MOCK = process.env.REACT_APP_MOCK === 'true';
 
 export const BASEURL = MOCK ? '/' : 'https://examples.com';
+export const token = {
+  accessTokenValue: 'ACCESS_TOKEN_USER',
+  refreshTokenValue: 'REFRESH_TOKEN_USER',
+}
 export const Colors = [
   'green',
   'gold',

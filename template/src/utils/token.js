@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getSettings } from '../config';
+import { getSettings, token } from '../config';
 
 /**
  * 发送请求前判断token是否存在，是否需要重新登录
@@ -8,7 +8,7 @@ import { getSettings } from '../config';
  * @returns {Object} axios配置信息
  */
 export async function initToken(config) {
-  const ACCESS_TOKEN = localStorage.getItem('ACCESS_TOKEN_USER');
+  const ACCESS_TOKEN = localStorage.getItem(token.accessTokenValue);
   if (ACCESS_TOKEN) {
     config.headers['Authorization'] = `Bearer ${ACCESS_TOKEN}`;
   } else {
@@ -23,7 +23,7 @@ export async function initToken(config) {
  */
 export function refreshToken(failedRequest) {
   const { api_origin, api_pathname } = getSettings();
-  const REFRESH_TOKEN = localStorage.getItem('REFRESH_TOKEN_USER');
+  const REFRESH_TOKEN = localStorage.getItem(token.refreshTokenValue);
   if (!REFRESH_TOKEN) {
     clearToken();
   }
@@ -34,7 +34,7 @@ export function refreshToken(failedRequest) {
     },
   }).then(({ data }) => {
     const { access_token } = data;
-    access_token && localStorage.setItem('ACCESS_TOKEN_USER', access_token);
+    access_token && localStorage.setItem(token.accessTokenValue, access_token);
     failedRequest.response.config.headers['Authorization'] =
       'Bearer ' + access_token;
     return Promise.resolve();
@@ -46,15 +46,15 @@ export function refreshToken(failedRequest) {
  * @param reToken
  */
 export function setToken(accessToken, reToken) {
-  localStorage.setItem('ACCESS_TOKEN_USER', accessToken);
-  localStorage.setItem('REFRESH_TOKEN_USER', reToken);
+  localStorage.setItem(token.accessTokenValue, accessToken);
+  localStorage.setItem(token.refreshTokenValue, reToken);
 }
 /**
  * 清除token，并重新登陆
  */
 export function clearToken() {
-  localStorage.removeItem('ACCESS_TOKEN_USER');
-  localStorage.removeItem('REFRESH_TOKEN_USER');
+  localStorage.removeItem(token.accessTokenValue);
+  localStorage.removeItem(token.refreshTokenValue);
   // 重新登录
   window.location.href = '/#/auth/login';
 }
