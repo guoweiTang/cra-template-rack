@@ -10,6 +10,11 @@
 
 This is a template for [Create React App](https://github.com/facebook/create-react-app).
 
+[![node](https://img.shields.io/node/v/cra-template-rack.svg?style=flat-square)](https://nodejs.org/en/)
+![npm](https://img.shields.io/npm/dt/cra-template-rack?style=flat-square)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/poeticloud/cra-template-rack?style=flat-square)
+![NPM](https://img.shields.io/npm/l/cra-template-rack?style=flat-square)
+
 ## usage
 
 ```sh
