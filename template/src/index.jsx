@@ -9,7 +9,9 @@ import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 import { setSettings } from './config';
 
-axios(window.PAGE_ORIGIN + '/settings.json')
+axios(window.PAGE_ORIGIN + '/settings.json', {
+  params: { t: +new Date() },
+})
   .then(({ data }) => {
     setSettings(data);
     if (process.env.REACT_APP_MOCK === 'true') {
