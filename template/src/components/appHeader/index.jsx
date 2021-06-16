@@ -24,7 +24,7 @@ const AppHeader = () => {
   const stateUser = useSelector(selectUser);
   const loginMenu = (
     <Menu className="menu-avator">
-      <Menu.Item icon={<UserOutlined />}>
+      <Menu.Item key="userinfo" icon={<UserOutlined />}>
         <Link to="/userInfo">我的账户</Link>
       </Menu.Item>
       <Menu.Item key="logout" icon={<PoweroffOutlined />} onClick={clearToken}>

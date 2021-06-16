@@ -3,9 +3,11 @@ import { message as Message } from 'antd';
 import { initToken, refreshToken } from './token';
 import { getSettings } from '../config';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
+import axiosRetry from 'axios-retry';
 
 let http;
 export default function request() {
+  if (http) return http;
   const { api_origin, api_pathname } = getSettings();
   http = axios.create({
     baseURL: `${api_origin}${api_pathname}`,
@@ -78,13 +80,13 @@ export default function request() {
       return response;
     },
     (error) => {
+      hide();
+      Message.destroy();
       const { response, request, message, config } = error;
       // 非get,post请求错误处理
       let tipsText = getTipsText(config.method);
       if (tipsText) {
         if (!response || response.status === 400 || response.status === 403) {
-          hide();
-          Message.destroy();
           Message.error(`${tipsText}失败请重试！`);
         }
       }
@@ -97,7 +99,6 @@ export default function request() {
         switch (status) {
           case 400:
           case 403:
-            Message.destroy();
             Message.error(data.message);
             break;
           case 422:
@@ -121,6 +122,22 @@ export default function request() {
       return Promise.reject(error);
     }
   );
+
+  // 无痛刷新token（默认状态码401为授权失败）
   createAuthRefreshInterceptor(http, refreshToken);
+
+  // 接口失败重试(默认状态码为5XX重试)
+  axiosRetry(http, {
+    retries: 2,
+    retryDelay: (retryCount) => {
+      return retryCount * 1000;
+    },
+    retryCondition: (axiosError) => {
+      const { response } = axiosError;
+      if (response && response.status >= 500) {
+        return true;
+      }
+    },
+  });
   return http;
 }

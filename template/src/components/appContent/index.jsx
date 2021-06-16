@@ -3,13 +3,7 @@ import { Layout } from 'antd';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import routes from '../../router';
 import SupremeLayout from '../supremeLayout';
-import Error404 from '../../views/error/404';
-import Login from '../../views/auth/login';
-import ResetPassword from '../../views/auth/resetPassword';
-import ResetPasswordConfirm from '../../views/auth/resetPassword/confirm';
-import ResetPasswordSuccess from '../../views/auth/resetPassword/success';
 import WrapperContent from '../wrapperContent';
-import Register from '../../views/auth/register';
 const { Content } = Layout;
 
 /**
@@ -20,12 +14,27 @@ function RouteWithSubRoutes(route) {
   return (
     <Route
       path={route.path}
-      render={(props) => (
+      render={(props) => {
         // pass the sub-routes down to keep nesting
-        <WrapperContent>
+        let res = (
           <route.component {...props} routes={route.routes} />
-        </WrapperContent>
-      )}
+        );
+        if (route.meta) {
+          const {isFullScreen, auth} = route.meta;
+          if (auth) {
+            res = (
+              <WrapperContent>{res}</WrapperContent>
+            );
+            <SupremeLayout>{res}</SupremeLayout>
+          }
+          if (isFullScreen) {
+            res = (
+              <SupremeLayout>{res}</SupremeLayout>
+            );
+          }
+        }
+        return res;
+      }}
     />
   );
 }
@@ -36,39 +45,6 @@ const AppContent = () => {
         {routes.map((route, i) => (
           <RouteWithSubRoutes key={i} {...route} />
         ))}
-        {/* TODO: 部分路由需要脱离页面已有布局，并且不加载侧边栏等冗余内容 */}
-
-        {/* 以下路由不包含侧边栏，独立于布局组件layout之外，可参考组件：SupremeLayout */}
-        <Route exact path="/auth/login">
-          <SupremeLayout>
-            <Login />
-          </SupremeLayout>
-        </Route>
-        <Route exact path="/auth/register">
-          <SupremeLayout>
-            <Register />
-          </SupremeLayout>
-        </Route>
-        <Route exact path="/auth/reset-password">
-          <SupremeLayout>
-            <ResetPassword />
-          </SupremeLayout>
-        </Route>
-        <Route exact path="/auth/reset-password/confirm">
-          <SupremeLayout>
-            <ResetPasswordConfirm />
-          </SupremeLayout>
-        </Route>
-        <Route exact path="/auth/reset-password/success">
-          <SupremeLayout>
-            <ResetPasswordSuccess />
-          </SupremeLayout>
-        </Route>
-        <Route exact path="/error/404">
-          <SupremeLayout>
-            <Error404 />
-          </SupremeLayout>
-        </Route>
         <Redirect from="*" to="/error/404" />
       </Switch>
     </Content>

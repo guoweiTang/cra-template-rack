@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import { Layout, Menu, Button, Typography } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  HomeOutlined,
-  ProjectOutlined,
-  SmileOutlined,
-  SolutionOutlined,
-  ExperimentOutlined,
-  ToolOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   QuestionCircleOutlined,
@@ -24,29 +18,6 @@ const AppSider = ({ collapsed, setCollapsed }) => {
 
   const handleChangeMenu = (key) => {
     setActiveName(key.toString());
-  };
-
-  const renderIcon = (val) => {
-    let res = <SmileOutlined />;
-    switch (val) {
-      case 'HomeOutlined':
-        res = <HomeOutlined />;
-        break;
-      case 'SolutionOutlined':
-        res = <SolutionOutlined />;
-        break;
-      case 'ProjectOutlined':
-        res = <ProjectOutlined />;
-        break;
-      case 'ExperimentOutlined':
-        res = <ExperimentOutlined />;
-        break;
-      case 'ToolOutlined':
-        res = <ToolOutlined />;
-        break;
-      default:
-    }
-    return res;
   };
 
   return (
@@ -78,9 +49,9 @@ const AppSider = ({ collapsed, setCollapsed }) => {
         >
           {routes.map(
             (item) =>
-              !item.isOuterMenu && (
-                <Menu.Item key={item.path} icon={renderIcon(item.icons)}>
-                  <Link to={item.path}>{item.title}</Link>
+            (!item.meta || !item.meta.hidden) && (
+                <Menu.Item key={item.path}>
+                  <Link to={item.path}>{item.meta.title}</Link>
                 </Menu.Item>
               )
           )}
