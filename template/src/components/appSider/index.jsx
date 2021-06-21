@@ -49,8 +49,8 @@ const AppSider = ({ collapsed, setCollapsed }) => {
         >
           {routes.map(
             (item) =>
-            (!item.meta || !item.meta.hidden) && (
-                <Menu.Item key={item.path}>
+              (!item.meta || !item.meta.hidden) && (
+                <Menu.Item key={item.path} icon={item.meta.icon}>
                   <Link to={item.path}>{item.meta.title}</Link>
                 </Menu.Item>
               )

@@ -8,10 +8,7 @@
 import App from '../../views/home';
 import Project from '../../views/project/index';
 import UserInfo from '../../views/userInfo';
-import {
-  HomeOutlined,
-  ProjectOutlined,
-} from '@ant-design/icons';
+import { HomeOutlined, ProjectOutlined } from '@ant-design/icons';
 /**
  *
  * path: 'router-path'           路由路径

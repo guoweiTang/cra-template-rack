@@ -8,6 +8,7 @@
       "@ant-design/icons": "^4.5.0",
       "antd": "^4.12.3",
       "axios-auth-refresh": "^3.1.0",
+      "axios-retry": "^3.1.9",
       "axios": "^0.21.1",
       "react": "^17.0.1",
       "react-dom": "^17.0.1",

@@ -16,21 +16,15 @@ function RouteWithSubRoutes(route) {
       path={route.path}
       render={(props) => {
         // pass the sub-routes down to keep nesting
-        let res = (
-          <route.component {...props} routes={route.routes} />
-        );
+        let res = <route.component {...props} routes={route.routes} />;
         if (route.meta) {
-          const {isFullScreen, auth} = route.meta;
+          const { isFullScreen, auth } = route.meta;
           if (auth) {
-            res = (
-              <WrapperContent>{res}</WrapperContent>
-            );
-            <SupremeLayout>{res}</SupremeLayout>
+            res = <WrapperContent>{res}</WrapperContent>;
+            <SupremeLayout>{res}</SupremeLayout>;
           }
           if (isFullScreen) {
-            res = (
-              <SupremeLayout>{res}</SupremeLayout>
-            );
+            res = <SupremeLayout>{res}</SupremeLayout>;
           }
         }
         return res;

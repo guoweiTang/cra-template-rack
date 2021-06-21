@@ -15,7 +15,7 @@ import Error404 from '../../views/error/404';
 const commonMeta = {
   hidden: true,
   isFullScreen: true,
-}
+};
 const routes = [
   {
     path: '/auth/login',

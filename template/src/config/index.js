@@ -12,7 +12,7 @@ export const BASEURL = MOCK ? '/' : 'https://examples.com';
 export const token = {
   accessTokenValue: 'ACCESS_TOKEN_USER',
   refreshTokenValue: 'REFRESH_TOKEN_USER',
-}
+};
 export const Colors = [
   'green',
   'gold',
